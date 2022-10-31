@@ -124,11 +124,9 @@ def scrapper(update, context):
             sendMessage(txt, context.bot, update.message)
 
 def htpmovies(link):
-    if link.startswith("https://htpmovies.lol/"):
-        r = rhead(link, allow_redirects=True)
-        url = r.url  
     client = cloudscraper.create_scraper(allow_brotli=False)
-    j = url.split('("')[-1]
+    r = client.get(url, allow_redirects=True).text
+    j = r.split('("')[-1]
     url = j.split('")')[0]
     param = url.split("/")[-1]
     DOMAIN = "https://go.kinemaster.cc"
