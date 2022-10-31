@@ -124,11 +124,12 @@ def scrapper(update, context):
             sendMessage(txt, context.bot, update.message)
 
 def htpmovies(link):
+    if link.startswith("https://htpmovies.lol/"):
+        r = rhead(link, allow_redirects=True)
+        url = r.url  
     client = cloudscraper.create_scraper(allow_brotli=False)
-    r = client.get(link, allow_redirects=True).text
-    j = r.split('("')[-1]
-    url = j.split('")')[0]
-    param = url.split("/")[-1]
+    j = url.split('?token=')[-1]
+    param = j.replace('&m=1','')
     DOMAIN = "https://go.kinemaster.cc"
     final_url = f"{DOMAIN}/{param}"
     resp = client.get(final_url)
@@ -149,7 +150,7 @@ def htpmovies(link):
     try: reftxt = resub(r'www\S+ \- ', '', li[0])
     except IndexError:
         LOGGER.info(p.text)
-        asleep(10)
+        asleep(5)
         p = rget(final)
         soup = BeautifulSoup(p.content, "html.parser")
         ss = soup.select("li.list-group-item")
