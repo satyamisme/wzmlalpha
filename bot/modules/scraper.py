@@ -151,7 +151,7 @@ def htpmovies(link):
     try: reftxt = resub(r'www\S+ \- ', '', li[0])
     except IndexError:
         LOGGER.info(p.text)
-        asleep(5)
+        asleep(10)
         p = rget(final)
         soup = BeautifulSoup(p.content, "html.parser")
         ss = soup.select("li.list-group-item")
