@@ -347,6 +347,7 @@ if SET_BOT_COMMANDS:
         (f'{BotCommands.CaptionCommand}','Set Caption for Leech Files'),
         (f'{BotCommands.UserLogCommand}','Set Dump Channel for Leech Files'),
         (f'{BotCommands.ScrapeCommand}','Scrape Links from Website'),
+        (f'{BotCommands.HtpCommand}','Htp from Website'),
         (f'{BotCommands.CountCommand}','Count file/folder of Drive'),
         (f'{BotCommands.DeleteCommand}','Delete file/folder from Drive'),
         (f'{BotCommands.CancelMirror}','Cancel a task'),
